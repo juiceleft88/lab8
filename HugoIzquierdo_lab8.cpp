@@ -9,7 +9,7 @@
 using namespace std;
 
 void sizeCheck(char[], int);
-bool digitCheck(char[], int)
+bool digitCheck(char[], int);
 
 int main()
 {
@@ -21,12 +21,15 @@ int main()
             "\n>One lowercase letter \n>One number \n>One special character (punctuation)" << endl;
     cin >> password;
     sizeCheck(password, SIZE);
-
-    while(digitCheck(password, SIZE) == false)
     {
-        cout << "You are missing a numerical value. please re-enter password: " <<endl;
-        cin >> password;
+        while(!digitCheck(password, SIZE))
+        {
+            cout << "You are missing a numerical value. please re-enter password: " <<endl;
+            cin >> password;
+        }
     }
+    
+
     
 
     
@@ -47,11 +50,13 @@ void sizeCheck(char custPass[], int size)
     }
 }
 
-bool digitCheck(char custPass[], int size)
+bool digitCheck(char cusPass[], int siz)
 {
-    for (int count = 0; count < size; count++)
-        if (!isdigit(custPass[count]))
-        return false;
+    for (int count = 0; count < siz; count++)
+    {
+        if (isdigit(cusPass[count]))
+        return true;
+    }
 }
 
 /*
