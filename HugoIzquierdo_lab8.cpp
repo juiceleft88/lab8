@@ -13,26 +13,28 @@ bool digitCheck(char[], int);
 
 int main()
 {
-    const int SIZE = 9;
+    const int letter_SIZE = 7;
     char password[SIZE];
-    int len;
+  
 
     cout << "Please create a password which is at least: \n\n>Six characters long \n>Has no spaces \n>Contains at least one uppercase letter" <<
             "\n>One lowercase letter \n>One number \n>One special character (punctuation)" << endl;
-    cin >> password;
-    sizeCheck(password, SIZE);
-    {
-        while(!digitCheck(password, SIZE))
+    cin.getline(password, SIZE);
+    cout << password <<endl;
+    cout << strlen(password);
+    cout << sizeof(password) << endl;
+    cout << strlen(password) +1;
+    int len = strlen(password)+1;
+    cout << len;
+    while (strlen(password) <= (SIZE-1) && strlen(password) != '\0')
         {
-            cout << "You are missing a numerical value. please re-enter password: " <<endl;
+            cout << "Try again";
             cin >> password;
         }
-    }
+    
+    //sizeCheck(password, SIZE);
     
 
-    
-
-    
 
 
 
@@ -40,18 +42,21 @@ int main()
     return 0;
 }
 
-void sizeCheck(char custPass[], int size)
+/*void checkPunct()
 {
-    int lengt = strlen(custPass) +1;
-    while (lengt != size)
+    bool okSize = false;
+    cin.getline(password, SIZE);
+    for (int i=0; i < strlen(password); i++)
     {
-        cout << "Your password is not following one of the above requirements. Please enter again: " << endl;
-        cin >> custPass;
+        if (password[i] )
     }
+
 }
 
+/*
 bool digitCheck(char cusPass[], int siz)
 {
+    return false;
     for (int count = 0; count < siz; count++)
     {
         if (isdigit(cusPass[count]))
