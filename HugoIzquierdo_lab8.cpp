@@ -19,16 +19,24 @@ int main()
     cout << "Please create a password which is at least: \n\n>Six characters long \n>Has no spaces \n>Contains at least one uppercase letter" <<
             "\n>One lowercase letter \n>One number \n>One special character (punctuation)" << endl;
     cin >> password;
-    len = strlen(password);
-    cout << len;
+    sizeCheck(password, SIZE);
 
-    //sizeCheck(password, SIZE);
     
 
 
 
 
     return 0;
+}
+
+void sizeCheck(char custPass[], int size)
+{
+    int lengt = strlen(custPass) +1;
+    while (lengt != size)
+    {
+        cout << "Your password is not following one of the above requirements. Please enter again: " << endl;
+        cin >> custPass;
+    }
 }
 
 /*
