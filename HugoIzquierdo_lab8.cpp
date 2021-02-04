@@ -8,18 +8,22 @@
 
 using namespace std;
 
-void sizeCheck(char[], int)
+void sizeCheck(char[], int);
 
 int main()
 {
     const int SIZE = 9;
     char password[SIZE];
+    int len;
 
     cout << "Please create a password which is at least: \n\n>Six characters long \n>Has no spaces \n>Contains at least one uppercase letter" <<
             "\n>One lowercase letter \n>One number \n>One special character (punctuation)" << endl;
-    cin.getline(password, SIZE);
+    cin >> password;
+    len = strlen(password);
+    cout << len;
 
-    sizeCheck(password, SIZE);
+    //sizeCheck(password, SIZE);
+    
 
 
 
@@ -27,9 +31,16 @@ int main()
     return 0;
 }
 
+/*
 void sizeCheck(char custPass[], int size)
 {
     int sizeTst = 0;
-    while (password[sizeTst] != size)
-        cout << "Please make sure to follow instructions for password creation." << endl;
+    while (custPass[size] < sizeTst || custPass[size] > sizeTst)
+    {
+        cout << "Your password is not following one of the above requirements. Please enter again: " << endl; 
+        cin >> custPass;    
+    }
+    cout << "Your password " << custPass << " meets character count requirement" << endl;
 }
+
+*/
