@@ -8,38 +8,29 @@
 
 using namespace std;
 
-void sizeCheck(char[], int);
+void sizeCheckMin(char[], int);
 bool digitCheck(char[], int);
 
 int main()
 {
-    const int letter_SIZE = 7;
-    char password[SIZE];
+    const int MAX_SIZE = 9;
+    const int MIN_SIZE = 6;
+    char password[MAX_SIZE];
   
 
     cout << "Please create a password which is at least: \n\n>Six characters long \n>Has no spaces \n>Contains at least one uppercase letter" <<
             "\n>One lowercase letter \n>One number \n>One special character (punctuation)" << endl;
-    cin.getline(password, SIZE);
-    cout << password <<endl;
-    cout << strlen(password);
-    cout << sizeof(password) << endl;
-    cout << strlen(password) +1;
-    int len = strlen(password)+1;
-    cout << len;
-    while (strlen(password) <= (SIZE-1) && strlen(password) != '\0')
-        {
-            cout << "Try again";
-            cin >> password;
-        }
-    
-    //sizeCheck(password, SIZE);
-    
-
-
-
+    cin.getline(password, MAX_SIZE);
+    sizeCheckMin(password, MIN_SIZE);
 
 
     return 0;
+}
+
+void sizeCheckMin(char custPass[], int size)
+{
+    if (strlen(custPass) < size)
+        cout << "Please enter at least 6 letters" << endl;
 }
 
 /*void checkPunct()
@@ -53,7 +44,7 @@ int main()
 
 }
 
-/*
+
 bool digitCheck(char cusPass[], int siz)
 {
     return false;
@@ -63,17 +54,7 @@ bool digitCheck(char cusPass[], int siz)
         return true;
     }
 }
-
-/*
-void sizeCheck(char custPass[], int size)
-{
-    int sizeTst = 0;
-    while (custPass[size] < sizeTst || custPass[size] > sizeTst)
-    {
-        cout << "Your password is not following one of the above requirements. Please enter again: " << endl; 
-        cin >> custPass;    
-    }
-    cout << "Your password " << custPass << " meets character count requirement" << endl;
-}
-
 */
+
+
+
