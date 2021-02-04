@@ -33,22 +33,39 @@ void sizeCheckMin(char custPass[], int size)
         cout << "Please enter at least 6 letters" << endl;
 }
 
-void digitCheck( char cusPass[], int size)
+void digitCheck(char cusPass[], int size)
 {
     bool hasDigit = false;
     bool hasPunct = false;
-    bool hasUpperC = false;
-    bool hasLowerC = false;
+    bool hasUpper = false;
+    bool hasLower = false;
+    
     for (int count = 0; count < strlen(cusPass); count++)
     {
         if (isdigit(cusPass[count]))
-        hasDigit= true;
+        hasDigit = true;
+        
+        if (ispunct(cusPass[count]))
+        hasPunct = true;
+
+        if (isupper(cusPass[count]))
+        hasUpper = true;
+
+        if (islower(cusPass[count]))
+        hasLower = true;
     }
+        
     if (!hasDigit)
         cout << "It needs a number" << endl;
+    if (!hasPunct)
+        cout << "It needs a punctuation" << endl;
+    if (!hasUpper)
+        cout << "It needs an uppercase letter" << endl;
+    if (!hasLower)
+        cout << "It needs a lowercase letter" << endl;
 }
 
-void casing(char cusPass[], int size)
+//void casing(char cusPass[], int size)
 /*void checkPunct()
 {
     bool okSize = false;
