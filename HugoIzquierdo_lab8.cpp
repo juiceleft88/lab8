@@ -19,7 +19,7 @@ int main()
     const int MIN_SIZE = 6;
     char password[MAX_SIZE];
     char passwordV[MAX_SIZE];
-  
+
 
     cout << "Please create a password which is at least: \n\n>Six characters long \n>Has no spaces \n>Contains at least one uppercase letter" <<
             "\n>One lowercase letter \n>One number \n>One special character (punctuation)" << endl;
@@ -27,9 +27,8 @@ int main()
     sizeCheckMin(password, MIN_SIZE);
     digitCheck(password, MAX_SIZE);
 
-    cout << "Please re-enter you password for verification: " << endl;
-    cin.getline(passwordV, MAX_SIZE);
-    comparingPass(password, passwordV);
+    if(strlen(password) > MIN_SIZE)  
+        comparingPass(password, passwordV);
 
 
     return 0;
@@ -47,6 +46,7 @@ void digitCheck(char cusPass[], int size)
     bool hasPunct = false;
     bool hasUpper = false;
     bool hasLower = false;
+    bool passTest = false; 
     
     for (int count = 0; count < strlen(cusPass); count++)
     {
@@ -61,17 +61,24 @@ void digitCheck(char cusPass[], int size)
 
         if (islower(cusPass[count]))
         hasLower = true;
+
+        if (!hasLower && !hasUpper && !hasPunct && !hasDigit)
+        passTest = true;
     }
+        while (passTest == false)
+    {
+        cout << "Please check your input again" << endl;
+        cin.ignore();
+        cin.getline(cusPass, size);
+    }
+    
+    }
+    
         
-    if (!hasDigit)
-        cout << "It needs a number" << endl;
-    if (!hasPunct)
-        cout << "It needs a punctuation" << endl;
-    if (!hasUpper)
-        cout << "It needs an uppercase letter" << endl;
-    if (!hasLower)
-        cout << "It needs a lowercase letter" << endl;
-}
+    //if (!hasDigit && !hasPunct && !hasUpper && !hasLower)
+        //cout << "Check the guidelines again" << endl;
+        
+    
 
 void comparingPass(char cusPass[], char verPass[])
 {
@@ -80,6 +87,12 @@ void comparingPass(char cusPass[], char verPass[])
     else
         cout << "The passwords do not match, please try again.";
 }
+
+void passesTest()
+{
+    //digitCheck();
+}
+
 //void casing(char cusPass[], int size)
 /*void checkPunct()
 {
