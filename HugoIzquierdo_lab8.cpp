@@ -10,12 +10,15 @@ using namespace std;
 
 void sizeCheckMin(char[], int);
 void digitCheck(char[], int);
+void comparingPass(char[], char[]);
+
 
 int main()
 {
     const int MAX_SIZE = 9;
     const int MIN_SIZE = 6;
     char password[MAX_SIZE];
+    char passwordV[MAX_SIZE];
   
 
     cout << "Please create a password which is at least: \n\n>Six characters long \n>Has no spaces \n>Contains at least one uppercase letter" <<
@@ -23,6 +26,11 @@ int main()
     cin.getline(password, MAX_SIZE);
     sizeCheckMin(password, MIN_SIZE);
     digitCheck(password, MAX_SIZE);
+
+    cout << "Please re-enter you password for verification: " << endl;
+    cin.getline(passwordV, MAX_SIZE);
+    comparingPass(password, passwordV);
+
 
     return 0;
 }
@@ -65,6 +73,13 @@ void digitCheck(char cusPass[], int size)
         cout << "It needs a lowercase letter" << endl;
 }
 
+void comparingPass(char cusPass[], char verPass[])
+{
+    if (strcmp(cusPass, verPass) == 0)
+        cout << "The passwords match. Thank you!";
+    else
+        cout << "The passwords do not match, please try again.";
+}
 //void casing(char cusPass[], int size)
 /*void checkPunct()
 {
