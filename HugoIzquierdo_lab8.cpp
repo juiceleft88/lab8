@@ -9,7 +9,7 @@
 using namespace std;
 
 void sizeCheckMin(char[], int);
-bool digitCheck(char[], int);
+void digitCheck(char[], int);
 
 int main()
 {
@@ -22,7 +22,7 @@ int main()
             "\n>One lowercase letter \n>One number \n>One special character (punctuation)" << endl;
     cin.getline(password, MAX_SIZE);
     sizeCheckMin(password, MIN_SIZE);
-
+    digitCheck(password, MAX_SIZE);
 
     return 0;
 }
@@ -33,6 +33,22 @@ void sizeCheckMin(char custPass[], int size)
         cout << "Please enter at least 6 letters" << endl;
 }
 
+void digitCheck( char cusPass[], int size)
+{
+    bool hasDigit = false;
+    bool hasPunct = false;
+    bool hasUpperC = false;
+    bool hasLowerC = false;
+    for (int count = 0; count < strlen(cusPass); count++)
+    {
+        if (isdigit(cusPass[count]))
+        hasDigit= true;
+    }
+    if (!hasDigit)
+        cout << "It needs a number" << endl;
+}
+
+void casing(char cusPass[], int size)
 /*void checkPunct()
 {
     bool okSize = false;
@@ -42,17 +58,6 @@ void sizeCheckMin(char custPass[], int size)
         if (password[i] )
     }
 
-}
-
-
-bool digitCheck(char cusPass[], int siz)
-{
-    return false;
-    for (int count = 0; count < siz; count++)
-    {
-        if (isdigit(cusPass[count]))
-        return true;
-    }
 }
 */
 
