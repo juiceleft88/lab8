@@ -41,12 +41,20 @@ int main()
 
 void sizeCheckMin(char custPass[], int size)
 {
+    bool minSize = false;
     if (strlen(custPass) < size)
+        minSize = true;
+    if (minSize)
+        {    
         cout << "Please enter at least 6 letters" << endl;
+        cin.getline (custPass, size);
+        }
+    
 }
 
 void digitCheck(bool validPass, char cusPass[], int size)
 {
+    bool minSize = false;
     bool hasDigit = false;
     bool hasPunct = false;
     bool hasUpper = false;
@@ -66,8 +74,11 @@ void digitCheck(bool validPass, char cusPass[], int size)
 
          if (islower(cusPass[count]))
          hasLower = true;
-     }
 
+         if (strlen(custPass) < size)
+         minSize = true;
+     }
+    
      if (!hasDigit)
          cout << "Your password needs a number" << endl;
      if (!hasPunct)
@@ -76,6 +87,10 @@ void digitCheck(bool validPass, char cusPass[], int size)
          cout << "Your password needs an uppercase letter" << endl;
      if (!hasLower)
          cout << "Your password needs a lowercase letter" << endl;
+    if (!minSize)
+        cout << "Please enter at least 6 letters" << endl;
+        
+
          
      if(!hasLower && !hasUpper && !hasDigit && !hasPunct)
         invPass = true;
