@@ -11,7 +11,7 @@ using namespace std;
 void sizeCheckMin(char[], int);
 void digitCheck(char[], int);
 void comparingPass(char[], char[]);
-
+bool valPass (bool);
 
 int main()
 {
@@ -27,10 +27,11 @@ int main()
     sizeCheckMin(password, MIN_SIZE);
     digitCheck(password, MAX_SIZE);
 
+    valpass();
     if(strlen(password) > MIN_SIZE)  
         {   
             cout << "Please re-enter password for verification: " << endl;
-            cin.getline(password2, MAX_SIZE);
+            cin.getline(passwordV, MAX_SIZE);
             comparingPass(password, passwordV);
         }
             
@@ -76,6 +77,17 @@ void digitCheck(char cusPass[], int size)
      if (!hasLower)
          cout << "It needs a lowercase letter" << endl;
  }
+
+ bool validPass(bool)
+ {
+     digitcheck();
+     bool valPass = false;
+
+     if(hasLower = true && hasUpper = true && hasDigit = true && hasPunct = true)
+        valPass = true;
+    if (valPass)
+        cout << "Valpass function is working" << endl;
+ }
     
 
 void comparingPass(char cusPass[], char verPass[])
@@ -88,21 +100,8 @@ void comparingPass(char cusPass[], char verPass[])
 
 void passesTest()
 {
-    //digitCheck();
+    
 }
-
-//void casing(char cusPass[], int size)
-/*void checkPunct()
-{
-    bool okSize = false;
-    cin.getline(password, SIZE);
-    for (int i=0; i < strlen(password); i++)
-    {
-        if (password[i] )
-    }
-
-}
-*/
 
 
 
