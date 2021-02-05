@@ -28,7 +28,12 @@ int main()
     digitCheck(password, MAX_SIZE);
 
     if(strlen(password) > MIN_SIZE)  
-        comparingPass(password, passwordV);
+        {   
+            cout << "Please re-enter password for verification: " << endl;
+            cin.getline(password2, MAX_SIZE);
+            comparingPass(password, passwordV);
+        }
+            
 
 
     return 0;
@@ -45,39 +50,32 @@ void digitCheck(char cusPass[], int size)
     bool hasDigit = false;
     bool hasPunct = false;
     bool hasUpper = false;
-    bool hasLower = false;
-    bool passTest = false; 
+    bool hasLower = false; 
     
     for (int count = 0; count < strlen(cusPass); count++)
-    {
-        if (isdigit(cusPass[count]))
-        hasDigit = true;
-        
-        if (ispunct(cusPass[count]))
-        hasPunct = true;
+     {
+         if (isdigit(cusPass[count]))
+         hasDigit= true;
 
-        if (isupper(cusPass[count]))
-        hasUpper = true;
+         if (ispunct(cusPass[count]))
+         hasPunct = true;
 
-        if (islower(cusPass[count]))
-        hasLower = true;
+         if (isupper(cusPass[count]))
+         hasUpper = true;
 
-        if (!hasLower && !hasUpper && !hasPunct && !hasDigit)
-        passTest = true;
-    }
-        while (passTest == false)
-    {
-        cout << "Please check your input again" << endl;
-        cin.ignore();
-        cin.getline(cusPass, size);
-    }
-    
-    }
-    
-        
-    //if (!hasDigit && !hasPunct && !hasUpper && !hasLower)
-        //cout << "Check the guidelines again" << endl;
-        
+         if (islower(cusPass[count]))
+         hasLower = true;
+     }
+
+     if (!hasDigit)
+         cout << "It needs a number" << endl;
+     if (!hasPunct)
+         cout << "It needs a punctuation" << endl;
+     if (!hasUpper)
+         cout << "It needs an uppercase letter" << endl;
+     if (!hasLower)
+         cout << "It needs a lowercase letter" << endl;
+ }
     
 
 void comparingPass(char cusPass[], char verPass[])
