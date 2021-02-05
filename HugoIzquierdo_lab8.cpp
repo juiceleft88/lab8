@@ -9,7 +9,7 @@
 using namespace std;
 
 void sizeCheckMin(char[], int);
-void digitCheck(bool, char[], int);
+void digitCheck(char[], int, int);
 void comparingPass(char[], char[]);
 
 int main()
@@ -23,8 +23,7 @@ int main()
     cout << "Please create a password which is at least: \n\n>Six characters long \n>Has no spaces \n>Contains at least one uppercase letter" <<
             "\n>One lowercase letter \n>One number \n>One special character (punctuation)" << endl;
     cin.getline(password, MAX_SIZE);
-    sizeCheckMin(password, MIN_SIZE);
-    digitCheck(passWord, password, MAX_SIZE);
+    digitCheck(password, MAX_SIZE, MIN_SIZE);
         
     
     if(strlen(password) > MIN_SIZE)  
@@ -39,20 +38,7 @@ int main()
     return 0;
 }
 
-void sizeCheckMin(char custPass[], int size)
-{
-    bool minSize = false;
-    if (strlen(custPass) < size)
-        minSize = true;
-    if (minSize)
-        {    
-        cout << "Please enter at least 6 letters" << endl;
-        cin.getline (custPass, size);
-        }
-    
-}
-
-void digitCheck(bool validPass, char cusPass[], int size)
+void digitCheck(char cusPass[], int size, int sizeMin)
 {
     bool minSize = false;
     bool hasDigit = false;
@@ -61,6 +47,9 @@ void digitCheck(bool validPass, char cusPass[], int size)
     bool hasLower = false; 
     bool invPass = false;
     
+    if (strlen(cusPass) < sizeMin)
+    minSize = true;
+
     for (int count = 0; count < strlen(cusPass); count++)
      {
          if (isdigit(cusPass[count]))
@@ -74,32 +63,25 @@ void digitCheck(bool validPass, char cusPass[], int size)
 
          if (islower(cusPass[count]))
          hasLower = true;
-
-         if (strlen(custPass) < size)
-         minSize = true;
-     }
-    
-     if (!hasDigit)
-         cout << "Your password needs a number" << endl;
-     if (!hasPunct)
-         cout << "Your password needs a punctuation" << endl;
-     if (!hasUpper)
-         cout << "Your password needs an uppercase letter" << endl;
-     if (!hasLower)
-         cout << "Your password needs a lowercase letter" << endl;
-    if (!minSize)
-        cout << "Please enter at least 6 letters" << endl;
-        
-
          
-     if(!hasLower && !hasUpper && !hasDigit && !hasPunct)
-        invPass = true;
+     }
 
-     while (invPass&(true))
-       {
+        if (minSize)  
+            cout << "Please enter at least 6 characters" << endl;
+        if (!hasDigit)
+            cout << "Your password needs a number" << endl;
+        if (!hasPunct)
+            cout << "Your password needs a punctuation" << endl;
+        if (!hasUpper)
+            cout << "Your password needs an uppercase letter" << endl;
+        if (!hasLower)
+            cout << "Your password needs a lowercase letter" << endl;
+
+        while (hasDigit == false || hasPunct == false || hasUpper == false || hasLower == false ||minSize == false)
+         {
          cout << "Please reenter selection" << endl;
          cin.getline(cusPass, size);
-        }
+         }
  }
  
 
