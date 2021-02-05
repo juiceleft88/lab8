@@ -9,9 +9,8 @@
 using namespace std;
 
 void sizeCheckMin(char[], int);
-void digitCheck(char[], int);
+void digitCheck(bool, char[], int);
 void comparingPass(char[], char[]);
-bool valPass (bool);
 
 int main()
 {
@@ -19,15 +18,15 @@ int main()
     const int MIN_SIZE = 6;
     char password[MAX_SIZE];
     char passwordV[MAX_SIZE];
-
+    bool passWord = false;
 
     cout << "Please create a password which is at least: \n\n>Six characters long \n>Has no spaces \n>Contains at least one uppercase letter" <<
             "\n>One lowercase letter \n>One number \n>One special character (punctuation)" << endl;
     cin.getline(password, MAX_SIZE);
     sizeCheckMin(password, MIN_SIZE);
-    digitCheck(password, MAX_SIZE);
-
-    valpass();
+    digitCheck(passWord, password, MAX_SIZE);
+        
+    
     if(strlen(password) > MIN_SIZE)  
         {   
             cout << "Please re-enter password for verification: " << endl;
@@ -46,12 +45,13 @@ void sizeCheckMin(char custPass[], int size)
         cout << "Please enter at least 6 letters" << endl;
 }
 
-void digitCheck(char cusPass[], int size)
+void digitCheck(bool validPass, char cusPass[], int size)
 {
     bool hasDigit = false;
     bool hasPunct = false;
     bool hasUpper = false;
     bool hasLower = false; 
+    bool invPass = false;
     
     for (int count = 0; count < strlen(cusPass); count++)
      {
@@ -69,26 +69,24 @@ void digitCheck(char cusPass[], int size)
      }
 
      if (!hasDigit)
-         cout << "It needs a number" << endl;
+         cout << "Your password needs a number" << endl;
      if (!hasPunct)
-         cout << "It needs a punctuation" << endl;
+         cout << "Your password needs a punctuation" << endl;
      if (!hasUpper)
-         cout << "It needs an uppercase letter" << endl;
+         cout << "Your password needs an uppercase letter" << endl;
      if (!hasLower)
-         cout << "It needs a lowercase letter" << endl;
- }
+         cout << "Your password needs a lowercase letter" << endl;
+         
+     if(!hasLower && !hasUpper && !hasDigit && !hasPunct)
+        invPass = true;
 
- bool validPass(bool)
- {
-     digitcheck();
-     bool valPass = false;
-
-     if(hasLower = true && hasUpper = true && hasDigit = true && hasPunct = true)
-        valPass = true;
-    if (valPass)
-        cout << "Valpass function is working" << endl;
+     while (invPass&(true))
+       {
+         cout << "Please reenter selection" << endl;
+         cin.getline(cusPass, size);
+        }
  }
-    
+ 
 
 void comparingPass(char cusPass[], char verPass[])
 {
@@ -100,7 +98,7 @@ void comparingPass(char cusPass[], char verPass[])
 
 void passesTest()
 {
-    
+
 }
 
 
